@@ -5,7 +5,7 @@ class TimarestanSpider(scrapy.Spider):
     name = 'timarestan'
     #https://t.me/troll_timarestan/20191?embed=1&mode=tme
     start_urls = []
-    for i in range(21900, 22000):
+    for i in range(20000, 22000):
         start_urls.append(f'https://t.me/troll_timarestan/{i}?embed=1&mode=tme')
     # def start_requests(self):
     #     for url in self.start_urls:

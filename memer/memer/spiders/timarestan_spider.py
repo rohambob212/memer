@@ -14,14 +14,14 @@ class TimarestanSpider(scrapy.Spider):
         vpost = response.css("video::attr(src)").get()
         if vpost:
             self.log(f"Parsing : {vpost}")
-            with ydl.YoutubeDL({"outtmpl": f"100293.%(ext)s"}) as dlr:
+            with ydl.YoutubeDL({"outtmpl": f"vids/{response.url.replace("https://t.me/troll_timarestan/","").replace("?embed=1&mode=tme","")}.%(ext)s"}) as dlr:
                 dlr.download(vpost)
         else:
             style = response.css(".tgme_widget_message_photo_wrap::attr(style)").get()
             impost = re.search(r"url\('(.+?)'\)", style).group(1) if style else None
             if impost:
                 self.log(f"Parsing : {impost}")
-                with ydl.YoutubeDL({"outtmpl": f"100293.%(ext)s"}) as dlr:
+                with ydl.YoutubeDL({"outtmpl": f"vids/{response.url.replace("https://t.me/troll_timarestan/","").replace("?embed=1&mode=tme","")}.%(ext)s"}) as dlr:
                     dlr.download(impost)
             else:
                 self.log(f"No media found : {response.url}")
